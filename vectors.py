@@ -28,14 +28,14 @@ def find_matches(query_vector, dataset_dict):
     for key in dataset_dict:
         value = dataset_dict[key]
         match_value = cosine_similarity(query_vector, value['vector'])
-        if match_value > 0.5:
+        if match_value > 0.5: #right now this only cares about matches greater than .5
             matches_to_return.append(key)
 
     return matches_to_return
 
 
 def make_vector_from_text(text):
-    model_path = "/Users/damicoac/remoteCode/nomic-embed-text-v1.5/"
+    model_path = "location of nomic-embed-text-v1.5 directory" # TODO update this to the directory of your nomic-embed-test directory
     embedder = SentenceTransformer(model_path, trust_remote_code=True)
     embedding = embedder.encode(text, convert_to_numpy=True).tolist()
     return embedding
