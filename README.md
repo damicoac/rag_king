@@ -1,3 +1,5 @@
+# My Presentation and Code from the Merge conference
+
 # Rag King
 Rag King is a Python application designed to analyze and extract meaningful insights from complex datasets. It uses a variety of libraries including os, vectors, dataset, together, and PyPDF2 to perform its operations.
 
@@ -34,3 +36,4 @@ Choose an option by entering its corresponding number. If you choose to create a
 
 If you choose to query the current database, you will be able to enter a query and the application will return the most relevant results from the knowledge base.
 
+The code will create a json file called knoweldge_base.json. This is where all input chunks and vectors go.
