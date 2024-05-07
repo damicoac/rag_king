@@ -54,6 +54,7 @@ def cosine_similarity(a, b):
     return np.dot(a, b)/(norm(a)*norm(b))
 
 def chunkifier(item_in_dataset, dataset_dict, text):
+    # this is where chunking happens. right now it is set to chunk every 2000 characters with a 1000 character overlap. in general, 4 characters is a token.
     front_index = 0
     back_index = 2000
     total_length = len(text)
