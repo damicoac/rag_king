@@ -51,25 +51,15 @@ def query(dataset):
 
             while vectors.num_tokens_from_messages(conversation_history) > 31000:
                 conversation_history = conversation_history[1:]
-            
-            client = Together(api_key="dac0a153dcfc4f5a788c6cbc040d59aa296dad38a7049a7578940ba10acd568e")
+
+            client = Together(api_key=os.environ.get("TOGETHER_API_KEY")))
+		#TODO this is where the code gets the together ai api key from your environment vars
             completion = client.chat.completions.create(
                 model='NousResearch/Nous-Hermes-2-Mixtral-8x7B-DPO',
                 messages= conversation_history,
                 temperature = 0.3,
                 max_tokens=1000
-            )
-
-            # client = OpenAI(
-            #     base_url = 'http://localhost:11434/v1',
-            #     api_key='ollama', # required, but unused
-            # )
-            # completion = client.chat.completions.create(
-            #     model='llama3:instruct',
-            #     messages= conversation_history,
-            #     temperature = 0.3,
-            #     max_tokens=1000
-            # )
+		    
             result = completion.choices[0].message.content
             print(">> Assistant: \n" + result)
             print("====================================")
@@ -78,8 +68,7 @@ def query(dataset):
   
 
 def make_database():
-    path = input("Enter the path to a directory of txt, markdown or pdf files: ")
-    # path = '/Users/damicoac/workingCode/ios-exploitation-labs'
+    path = input("Enter the absolute path to a directory of txt, markdown or pdf files: ")
 
     dataset_dict = {}
     for dirpath, dirnames, filenames in os.walk(path):
