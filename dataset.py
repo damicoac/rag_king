@@ -34,6 +34,7 @@ import json
 
 
 def write_to_file(datasets):
+    # if you want to change the name of the knoweldge base file, programatically or other wise. these funtions are where you do it.
     with open('knoweldge_base.json', 'w') as f:
         json.dump(datasets, f)
 
